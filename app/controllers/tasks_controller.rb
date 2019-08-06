@@ -1,14 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user_logged_in
-  before_action :correct_user
+  before_action :correct_user,only: [:show, :destroy,:update,:edit]
   
   def show
-    if @task=Task.find(params[:id])
-      redirect_to @task
-    else
-      render root_url
+    
   end
+  
 
   def index
     if logged_in?
