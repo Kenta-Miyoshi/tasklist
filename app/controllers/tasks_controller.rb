@@ -4,7 +4,10 @@ class TasksController < ApplicationController
   before_action :correct_user
   
   def show
-   
+    if @task=Task.find(params[:id])
+      redirect_to @task
+    else
+      render root_url
   end
 
   def index
